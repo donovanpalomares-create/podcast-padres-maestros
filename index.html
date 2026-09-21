@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Podcast - Padres brillantes, maestros fascinantes</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+                        background-image:
+                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+                url("C:/yopo/portada.jpeg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 45px 30px;
+            border-radius: 25px;
+
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: white;
+            font-size: 34px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px black;
+        }
+
+        h2 {
+            color: #f5f5f5;
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .boton-play {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+            background: rgba(255,255,255,0.9);
+            color: #333;
+
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: auto;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+            transition: 0.3s;
+        }
+
+        .boton-play:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .boton-play:active {
+            transform: scale(0.95);
+        }
+
+        #estado {
+            color: white;
+            margin-top: 25px;
+            font-size: 16px;
+            text-shadow: 1px 1px 4px black;
+        }
+
+        .autor {
+            margin-top: 30px;
+            color: white;
+            font-size: 14px;
+            text-shadow: 1px 1px 4px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>PADRES BRILLANTES,<br>MAESTROS FASCINANTES</h1>
+
+        <h2>Podcast</h2>
+
+               <button class="boton-play" id="playButton" onclick="reproducirAudio()">
+            ▶
+        </button>
+
+        <p id="estado">Presiona el botón para escuchar el podcast</p>
+
+        <p class="autor">
+            Elaborado por Marco Donovan López Palomares
+        </p>
+
+    </div>
+
+    
+    <audio id="audio">
+        <source src="https://s19.aconvert.com/convert/p3r68-cdx67/jgf98-qtp5s.wav" type="audio/mpeg">
+        Tu navegador no puede reproducir este audio.
+    </audio>
+
+    <script>
+
+        const audio = document.getElementById("audio");
+        const boton = document.getElementById("playButton");
+        const estado = document.getElementById("estado");
+
+        function reproducirAudio() {
+
+            if (audio.paused) {
+
+                audio.play();
+
+                boton.innerHTML = "❚❚";
+                estado.innerHTML = "Reproduciendo podcast...";
+
+            } else {
+
+                audio.pause();
+
+                boton.innerHTML = "▶";
+                estado.innerHTML = "Podcast pausado";
+
+            }
+        }
+
+        audio.addEventListener("ended", function() {
+
+            boton.innerHTML = "▶";
+            estado.innerHTML = "Podcast terminado. Presiona ▶ para escucharlo nuevamente.";
+
+        });
+
+    </script>
+
+</body>
+</html>
